@@ -55,6 +55,21 @@ const KATEX_OPTS = {
   },
 };
 
+/** '<' wewnątrz wzoru, po którym stoi litera, zostałby potraktowany przez przeglądarkę
+ *  jako początek znacznika HTML (np. $0<t<s$). Wzory powinny używać \lt. */
+function sprawdzNierownosci(src) {
+  const zle = [];
+  for (const m of src.matchAll(/\$\$?([^$]*?)\$\$?/g)) {
+    if (/<[A-Za-z]/.test(m[1])) zle.push(m[1].trim().slice(0, 80));
+  }
+  if (zle.length) {
+    throw new Error(
+      "Wzór zawiera '<' przed literą - w HTML to początek znacznika. Użyj \\lt:\n  " +
+        zle.join("\n  "),
+    );
+  }
+}
+
 function renderMath(src) {
   // $$ ... $$  (wzory blokowe)
   src = src.replace(/\$\$([\s\S]+?)\$\$/g, (_m, tex) => {
@@ -104,6 +119,7 @@ function katexCss() {
 /* 4. Budowa                                                          */
 /* ------------------------------------------------------------------ */
 const template = readFileSync(TEMPLATE, "utf8");
+sprawdzNierownosci(template);
 let html = resolveIncludes(template);
 html = renderMath(html);
 html = html.replace("/*{{KATEX_CSS}}*/", () => katexCss());

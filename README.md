@@ -3,8 +3,8 @@
 Opracowanie zadań **3, 4 i 5** z kolokwium (plik `ALGT_K1_25Z_T2.pdf`) wraz z rozszerzoną teorią
 do poruszanej tematyki.
 
-**Główny plik: [`rozwiazania.html`](rozwiazania.html)** — samodzielny dokument (wzory wyrenderowane,
-czcionki wbudowane, działa offline, można wydrukować przez Ctrl/Cmd + P).
+**Gotowe dokumenty:** [`rozwiazania.pdf`](rozwiazania.pdf) — wersja do druku;
+[`rozwiazania.html`](rozwiazania.html) — samodzielna wersja do przeglądarki, działająca offline.
 
 ## Co jest w środku
 
@@ -28,24 +28,52 @@ czcionki wbudowane, działa offline, można wydrukować przez Ctrl/Cmd + P).
 ## Struktura repozytorium
 
 ```
-rozwiazania.html            <- gotowy dokument (deliverable)
+rozwiazania.pdf             <- gotowy dokument do druku
+rozwiazania.html            <- samodzielny dokument do przeglądarki
 src/rozwiazania.template.html  <- źródło treści (HTML + LaTeX w $...$ / $$...$$)
 src/figury/*.svg            <- rysunki (generowane)
 narzedzia/figury.py         <- generator rysunków SVG
-narzedzia/build.mjs         <- generator dokumentu (KaTeX -> HTML, jeden samodzielny plik)
-package.json                <- zależność: katex 0.16.11 (tylko do budowania)
+narzedzia/build.mjs         <- generator HTML (KaTeX)
+narzedzia/build_pdf.py      <- generator PDF
+narzedzia/pdf/              <- renderowanie wzorów i skład PDF
+src/fonty/                  <- fonty i ich licencje
+requirements-pdf.txt        <- zależności Pythona do budowy PDF
+package.json                <- zależności Node do budowania
 ```
 
 ## Ponowne zbudowanie
 
 ```bash
-npm install          # KaTeX (tylko narzędzie budowania)
+npm install          # zależności Node do budowania
 npm run figury       # python3 narzedzia/figury.py  -> src/figury/*.svg
 npm run build        # node narzedzia/build.mjs      -> rozwiazania.html
 ```
 
+## PDF
+
+Gotowy [`rozwiazania.pdf`](rozwiazania.pdf) zawiera te same treści co HTML, spis treści
+z numerami stron oraz rysunki. Format to A4; czcionki są osadzone. Większość wzorów
+blokowych jest wektorowa, natomiast wzory w tekście są obrazami o wysokiej rozdzielczości
+(nie są więc w pełni wyszukiwalne jako tekst).
+
+Aby wygenerować PDF ze wspólnego szablonu, potrzebne są Node.js, npm i Python 3:
+
+```bash
+npm install
+python3 -m venv .venv
+. .venv/bin/activate
+pip install -r requirements-pdf.txt
+npm run pdf                         # -> rozwiazania.pdf
+python3 narzedzia/build_pdf.py --podglad 1,2,3 --dpi 110
+```
+
+Podglądy są zapisywane w `/tmp/edu_algt_pdf/podglad/`, a cache wzorów i rysunków
+w `/tmp/edu_algt_pdf/`. Generator używa MathJax, ReportLab, svglib i resvg; wzory
+blokowe zawierające tekst niewystępujący w czcionce matematycznej są rasteryzowane.
+
 Wzory w szablonie zapisujemy w jednej linii (`$...$` lub `$$...$$`); skrypt budujący zgłasza błąd,
-jeśli któryś wzór nie został przetworzony albo ma błąd składni LaTeX-a.
+jeśli któryś wzór nie został przetworzony albo ma błąd składni LaTeX-a. Nierówność
+zapisuj jako `\lt` zamiast `<` bezpośrednio przed literą, aby nie przypominała znacznika HTML.
 
 Wszystkie wyniki zostały niezależnie sprawdzone: podstawieniem i wzorami Viète'a (zadanie 3),
 rachunkiem symbolicznym (zadanie 4) oraz numerycznym testem przynależności punktów do zbiorów (zadanie 5).

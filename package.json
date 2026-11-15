@@ -1,0 +1,13 @@
+{
+  "name": "edu-algt-kol",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Rozwiazania kolokwium 1 ALGT 2025Z grupa T2 (zadania 3, 4, 5) z teoria",
+  "scripts": {
+    "build": "node narzedzia/build.mjs",
+    "figury": "python3 narzedzia/figury.py"
+  },
+  "dependencies": {
+    "katex": "0.16.11"
+  }
+}

@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALGT 2025Z, grupa T2 — zadania 3, 4, 5 z teorią</title>
+<style>
+/*{{KATEX_CSS}}*/
+</style>
+<style>
+:root{
+  --ink:#1f2328;
+  --ink-soft:#4b5563;
+  --muted:#6b7280;
+  --line:#e2ddd3;
+  --paper:#fdfcfa;
+  --card:#ffffff;
+  --blue:#1d4ed8;
+  --blue-bg:#eef2ff;
+  --green:#0f766e;
+  --green-bg:#ecfdf5;
+  --amber:#92400e;
+  --amber-bg:#fffbeb;
+  --red:#b42318;
+  --red-bg:#fef2f2;
+  --violet:#5b21b6;
+  --violet-bg:#f5f3ff;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Georgia,"Iowan Old Style","Palatino Linotype","DejaVu Serif",serif;
+  font-size:17px;
+  line-height:1.62;
+  text-rendering:optimizeLegibility;
+}
+.wrap{max-width:52rem;margin:0 auto;padding:2.2rem 1.4rem 5rem}
+
+/* ---------- nagłówek ---------- */
+.hero{
+  border-bottom:2px solid var(--ink);
+  padding-bottom:1.2rem;
+  margin-bottom:2rem;
+}
+.hero .kicker{
+  font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:.74rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 .5rem;
+}
+.hero h1{
+  font-size:2.05rem;
+  line-height:1.18;
+  margin:0 0 .45rem;
+  letter-spacing:-.01em;
+}
+.hero .sub{margin:0;color:var(--ink-soft);font-size:1.02rem;font-style:italic}
+.hero .meta{
+  margin-top:.9rem;
+  font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:.8rem;
+  color:var(--muted);
+  display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;
+}
+.hero .meta span::before{content:"•";margin-right:.45rem;color:#c3bdb1}
+.hero .meta span:first-child::before{content:"";margin:0}
+
+/* ---------- spis treści ---------- */
+.toc{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:1rem 1.3rem;
+  margin:0 0 2.4rem;
+  font-size:.95rem;
+}
+.toc h2{
+  font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  margin:.1rem 0 .6rem;font-weight:700;border:0;padding:0;
+}
+.toc ol{margin:0;padding-left:1.15rem;columns:2;column-gap:2rem}
+.toc li{margin:.12rem 0;break-inside:avoid}
+.toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent}
+.toc a:hover{border-bottom-color:var(--muted)}
+@media (max-width:640px){.toc ol{columns:1}}
+
+/* ---------- nagłówki sekcji ---------- */
+h2.part{
+  font-size:1.42rem;
+  margin:3.2rem 0 1rem;
+  padding-bottom:.4rem;
+  border-bottom:1px solid var(--line);
+  letter-spacing:-.01em;
+}
+h2.part .tag{
+  display:block;
+  font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);font-weight:700;margin-bottom:.25rem;
+}
+h3{
+  font-size:1.2rem;
+  margin:2.6rem 0 .7rem;
+  letter-spacing:-.005em;
+}
+h4{
+  font-size:1.02rem;
+  margin:1.7rem 0 .45rem;
+  font-weight:700;
+}
+h4 .num{color:var(--muted);font-weight:400;margin-right:.35rem}
+h3 .pts{
+  font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:.72rem;font-weight:600;color:var(--violet);
+  background:var(--violet-bg);border-radius:99px;padding:.16rem .5rem;
+  vertical-align:.16em;margin-left:.45rem;letter-spacing:.02em;
+}
+
+p{margin:.72rem 0}
+ul,ol{margin:.7rem 0;padding-left:1.35rem}
+li{margin:.3rem 0}
+li>ul,li>ol{margin:.3rem 0}
+strong{font-weight:700}
+em{font-style:italic}
+a{color:var(--blue)}
+code{
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  font-size:.88em;background:#f3f1ec;padding:.1em .32em;border-radius:3px;
+}
+hr{border:0;border-top:1px solid var(--line);margin:2.4rem 0}
+
+/* ---------- lead / wstęp ---------- */
+.lead{
+  font-size:1.06rem;
+  color:#333a42;
+}
+.note-inline{
+  font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:.9rem;color:var(--muted);
+}
+
+/* ---------- ramki ---------- */
+.box{
+  margin:1.5rem 0;
+  padding:1rem 1.2rem;
+  border-radius:8px;
+  border:1px solid var(--line);
+  border-left:4px solid var(--muted);
+  background:var(--card);
+}
+.box>*:first-child{margin-top:0}
+.box>*:last-child{margin-bottom:0}
+.box .label{
+  display:block;
+  font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;
+  margin-bottom:.4rem;
+}
+.box--teoria{background:var(--blue-bg);border-left-color:var(--blue);border-color:#dbe3fb}
+.box--teoria .label{color:var(--blue)}
+.box--rozw{background:var(--card);border-left-color:var(--ink)}
+.box--rozw .label{color:var(--ink)}
+.box--kom{background:var(--green-bg);border-left-color:var(--green);border-color:#cdeee4}
+.box--kom .label{color:var(--green)}
+.box--uwaga{background:var(--amber-bg);border-left-color:var(--amber);border-color:#f5e6bf}
+.box--uwaga .label{color:var(--amber)}
+.box--blad{background:var(--red-bg);border-left-color:var(--red);border-color:#f6d9d6}
+.box--blad .label{color:var(--red)}
+.box--odp{
+  background:var(--violet-bg);
+  border-left-color:var(--violet);
+  border-color:#e0d9fb;
+  border-left-width:5px;
+}
+.box--odp .label{color:var(--violet)}
+
+/* ---------- dowód / uzasadnienie ---------- */
+.proof{border-left:2px solid var(--line);padding-left:1rem;margin:1rem 0;color:#2b3138}
+.proof .label{font-style:italic;color:var(--muted);font-size:.92rem;display:block;margin-bottom:.2rem}
+
+/* ---------- rysunki ---------- */
+figure{
+  margin:1.8rem 0;
+  padding:1rem 1rem .7rem;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:8px;
+}
+figure svg{display:block;margin:0 auto;max-width:100%;height:auto}
+figcaption{
+  margin-top:.55rem;
+  font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:.83rem;color:var(--muted);text-align:center;line-height:1.45;
+}
+figure .fig-num{font-weight:700;color:var(--ink-soft)}
+.fig-pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.8rem 0}
+.fig-pair figure{margin:0}
+@media (max-width:720px){.fig-pair{grid-template-columns:1fr}}
+
+/* ---------- tabele ---------- */
+table{
+  border-collapse:collapse;
+  width:100%;
+  margin:1.2rem 0;
+  font-size:.95rem;
+  background:#fff;
+}
+th,td{border:1px solid var(--line);padding:.45rem .6rem;text-align:left;vertical-align:top}
+th{background:#f6f4ef;font-weight:700}
+tbody tr:nth-child(even){background:#fbfaf7}
+
+/* ---------- katex ---------- */
+.katex{font-size:1.03em}
+.katex-display{
+  margin:1.05rem 0;
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding:.15rem 0;
+}
+.katex-display>.katex{font-size:1.06em}
+
+/* ---------- listy kontrolne ---------- */
+.check{list-style:none;padding-left:0}
+.check li{
+  padding-left:1.6rem;
+  position:relative;
+  margin:.42rem 0;
+}
+.check li::before{
+  content:"☐";
+  position:absolute;left:0;top:-.1rem;
+  color:var(--muted);font-size:1.05rem;
+}
+
+/* ---------- stopka ---------- */
+footer{
+  margin-top:3.5rem;padding-top:1.2rem;border-top:1px solid var(--line);
+  font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:.82rem;color:var(--muted);
+}
+
+/* ---------- druk ---------- */
+@media print{
+  body{background:#fff;font-size:11.2pt;line-height:1.5}
+  .wrap{max-width:none;padding:0}
+  .toc{break-inside:avoid}
+  .box,figure,table{break-inside:avoid}
+  h2.part,h3,h4{break-after:avoid}
+  a{color:inherit;text-decoration:none}
+  @page{margin:16mm 15mm}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <p class="kicker">Kolokwium 1 &middot; ALGT 2025Z &middot; grupa T2</p>
+  <h1>Kolokwium 1 &mdash; ALGT 2025Z, grupa T2<br>zadania 3, 4 i 5</h1>
+  <p class="sub">Pełne rozwiązania z komentarzem, rozszerzona teoria do poruszanej tematyki, rysunki i lista kontrolna.</p>
+  <div class="meta">
+    <span>pierwiastkowanie liczb zespolonych</span>
+    <span>ułamki proste nad $\R$ i nad $\C$</span>
+    <span>rodziny zbiorów na płaszczyźnie</span>
+  </div>
+</header>
+
+<p class="lead">Dokument obejmuje trzy zadania z kolokwium (3, 4, 5) &mdash; czyli dokładnie te trzy tematy, które trzeba umieć
+&bdquo;na pewniaka&rdquo;: pierwiastki liczb zespolonych, rozkład funkcji wymiernej na ułamki proste oraz operacje
+$\bigcup$ i $\bigcap$ na rodzinie zbiorów zależnych od parametru. Każde zadanie jest rozwiązane krok po kroku,
+z uzasadnieniem każdego przejścia, sprawdzeniem wyniku i komentarzem (co jest istotą zadania, gdzie traci się punkty).
+Do każdego tematu dołączona jest część teoretyczna &mdash; z twierdzeniami i szkicami dowodów &mdash; żeby rozumieć,
+<em>dlaczego</em> metoda działa, a nie tylko ją odtwarzać.</p>
+
+<div class="box box--uwaga">
+  <span class="label">Konwencje i oznaczenia</span>
+  <ul style="margin-bottom:0">
+    <li>$\jj$ &mdash; jednostka urojona, $\jj^2=-1$ (w notacji zadania $j$; zamiennie $i$).</li>
+    <li>$\cis\varphi := \cos\varphi + \jj\sin\varphi$, więc $z = r\cis\varphi = r e^{\jj\varphi}$ (postać trygonometryczna / wykładnicza).</li>
+    <li>$\R_+ = [0,+\infty)$, $\N = \{1,2,3,\dots\}$; $\nabla_t$ &mdash; trójkąt <em>wypełniony</em> (wraz z brzegiem).</li>
+    <li>Postać kanoniczna liczby zespolonej: $a+b\jj$, $a,b\in\R$. Postać trygonometryczna: $r\cis\varphi$, $r\ge 0$.</li>
+  </ul>
+</div>
+
+<nav class="toc">
+  <h2>Spis treści</h2>
+  <ol>
+    <li><a href="#cz1">Część I &mdash; teoria</a>
+      <ol style="columns:1;padding-left:1rem">
+        <li><a href="#t1">Liczby zespolone: pierwiastkowanie</a></li>
+        <li><a href="#t2">Funkcje wymierne i ułamki proste</a></li>
+        <li><a href="#t3">Zbiory na płaszczyźnie i rodziny</a></li>
+      </ol>
+    </li>
+    <li><a href="#cz2">Część II &mdash; rozwiązania</a>
+      <ol style="columns:1;padding-left:1rem">
+        <li><a href="#z3">Zadanie 3 (4 p.)</a></li>
+        <li><a href="#z4">Zadanie 4 (2 p.)</a></li>
+        <li><a href="#z5">Zadanie 5 (3 p.)</a></li>
+      </ol>
+    </li>
+    <li><a href="#cz3">Część III &mdash; ściąga i lista kontrolna</a></li>
+  </ol>
+</nav>
+
+<h2 class="part" id="cz1"><span class="tag">Część I</span>Teoria potrzebna do zadań 3, 4 i 5</h2>
+
+<h3 id="t1">1. Liczby zespolone: postać trygonometryczna i pierwiastkowanie</h3>
+
+<h4><span class="num">1.1</span>Trzy postacie liczby zespolonej</h4>
+
+<p>Liczba zespolona to $z = a + b\jj$, gdzie $a,b\in\R$; piszemy $a = \operatorname{Re}z$, $b = \operatorname{Im}z$.
+Sprzężenie to $\bar z = a - b\jj$, a moduł to $|z| = \sqrt{a^2+b^2}$. Kluczowa tożsamość, na której opiera się cała
+arytmetyka:</p>
+
+$$z\bar z = (a+b\jj)(a-b\jj) = a^2+b^2 = |z|^2 .$$
+
+<p>Dzielenie sprowadza się więc do mnożenia przez sprzężenie mianownika:
+$\dfrac{z}{w} = \dfrac{z\bar w}{|w|^2}$. Moduł ma własności multyplikatywne
+$|zw| = |z|\,|w|$, $\left|\tfrac{z}{w}\right| = \tfrac{|z|}{|w|}$ oraz nierówność trójkąta $|z+w|\le |z|+|w|$
+(&bdquo;równość tylko dla wektorów o tym samym kierunku&rdquo;).</p>
+
+<p>Jeśli $z\ne 0$, to $z$ leży na okręgu o promieniu $r = |z|$ i można go opisać kątem $\varphi$ (mierząc od dodatniej
+półosi rzeczywistej):</p>
+
+$$z = r(\cos\varphi + \jj\sin\varphi) = r\cis\varphi = r e^{\jj\varphi}.$$
+
+<p>Liczbę $\varphi$ nazywamy <strong>argumentem</strong> liczby $z$. Argument nie jest wyznaczony jednoznacznie:
+$\arg z$ jest zbiorem $\{\varphi_0 + 2k\pi : k\in\Z\}$, a $\operatorname{Arg}z$ (argument główny) to ten
+przedstawiciel, który leży w przedziale $(-\pi,\pi]$. Piszemy wtedy $\arg z = \operatorname{Arg} z + 2k\pi$.</p>
+
+<div class="box box--teoria">
+  <span class="label">Jak policzyć argument</span>
+  <p>Najpierw ćwiartka, potem wzór na tangens &mdash; nigdy odwrotnie (klasyczne źródło błędów):</p>
+  <table>
+    <thead><tr><th>Położenie $z=a+b\jj$</th><th>Argument</th></tr></thead>
+    <tbody>
+      <tr><td>$a>0$ (I i IV ćwiartka)</td><td>$\varphi = \arctg\frac{b}{a}$</td></tr>
+      <tr><td>$a<0,\ b\ge 0$ (II ćwiartka)</td><td>$\varphi = \arctg\frac{b}{a} + \pi$</td></tr>
+      <tr><td>$a<0,\ b<0$ (III ćwiartka)</td><td>$\varphi = \arctg\frac{b}{a} - \pi$</td></tr>
+      <tr><td>$a=0,\ b>0$ (dodatnia półoś urojona)</td><td>$\varphi = \frac{\pi}{2}$</td></tr>
+      <tr><td>$a=0,\ b<0$ (ujemna półoś urojona)</td><td>$\varphi = -\frac{\pi}{2}$ (lub $\frac{3\pi}{2}$)</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-bottom:0">Dla $a=0$ tangens nie istnieje, dlatego te przypadki trzeba trzymać osobno.
+  W zadaniach rachunkowych wygodniej jest często nie liczyć $\operatorname{Arg}$, tylko <em>odczytać kąt z rysunku</em>
+  albo rozpoznać liczbę jako $r\cis\varphi$ dla znanego $\varphi$ (np. $\jj = \cis\frac{\pi}{2}$,
+  $-1 = \cis\pi$, $1+\jj = \sqrt2\cis\frac{\pi}{4}$).</p>
+</div>
+
+<h4><span class="num">1.2</span>Interpretacja geometryczna mnożenia</h4>
+
+<p>Dla $z = r_1\cis\varphi_1$, $w = r_2\cis\varphi_2$ ze wzorów na cosinus i sinus sumy dostajemy</p>
+
+$$z\cdot w = r_1r_2\,\cis(\varphi_1+\varphi_2), \qquad \frac{z}{w} = \frac{r_1}{r_2}\,\cis(\varphi_1-\varphi_2)\quad (w\ne 0).$$
+
+<p>Czyli: <strong>mnożenie = skalowanie o $|w|$ i obrót o $\arg w$</strong>. To wyjaśnia, dlaczego zbiory
+$\{z : |z-z_0| = r\}$ (okręgi) i półproste $\{z : \arg(z-z_0) = \varphi\}$ są naturalnymi obiektami na płaszczyźnie
+zespolonej: mnożenie przez $r\cis\varphi$ przeprowadza okrąg na okrąg i półprostą na półprostą.</p>
+
+<h4><span class="num">1.3</span>Wzór de Moivre'a</h4>
+
+<div class="box box--teoria">
+  <span class="label">Twierdzenie (de Moivre)</span>
+  <p>Dla $n\in\N$ i $\varphi\in\R$:</p>
+  $$(r\cis\varphi)^n = r^n\cis(n\varphi).$$
+  <div class="proof">
+    <span class="label">Szkic dowodu.</span> Dla $n=1$ trywialne. Krok indukcyjny: mnożąc
+    $(r\cis\varphi)^n\cdot (r\cis\varphi)$, z 1.2 dostajemy $r^{n+1}\cis(n\varphi+\varphi)$, czyli tezę dla $n+1$.
+    Równoważnie: podstawiamy wzór Eulera i korzystamy z $e^{\jj n\varphi} = (e^{\jj\varphi})^n$.
+  </div>
+  <p style="margin-bottom:0"><em>Przykład.</em> $(1+\jj)^8$: mamy $1+\jj = \sqrt2\cis\frac{\pi}{4}$, więc
+  $(1+\jj)^8 = (\sqrt2)^8\cis\frac{8\pi}{4} = 16\cis(2\pi) = 16$.
+  Bez de Moivre'a trzeba by siedem razy mnożyć nawiasy.</p>
+</div>
+
+<h4><span class="num">1.4</span>Pierwiastki $n$-tego stopnia &mdash; twierdzenie i geometria</h4>
+
+<div class="box box--teoria">
+  <span class="label">Twierdzenie (pierwiastki liczby zespolonej)</span>
+  <p>Niech $n\ge 2$, $w = \rho\,\cis\psi \ne 0$. Wtedy równanie $z^n = w$ ma w $\C$ dokładnie $n$ rozwiązań
+  danych wzorem</p>
+  $$z_k = \rho^{\frac1n}\,\cis\left(\frac{\psi+2k\pi}{n}\right), \qquad k = 0,1,\dots,n-1,$$
+  <p>gdzie $\rho^{1/n}$ jest <em>rzeczywistym</em> pierwiastkiem $n$-tego stopnia z $\rho > 0$. Zbiór rozwiązań nie
+  zależy od tego, który argument $\psi$ liczby $w$ wybierzemy.</p>
+  <div class="proof">
+    <span class="label">Uzasadnienie.</span>
+    Niech $z = r\cis\varphi \ne 0$. Wtedy $z^n = r^n\cis(n\varphi)$. Równość $z^n = w$ oznacza równość modułów
+    i równość argumentów modulo $2\pi$:
+    $$r^n = \rho \;\Longrightarrow\; r = \rho^{\frac1n}, \qquad n\varphi \equiv \psi \pmod{2\pi} .$$
+    Drugi warunek to $n\varphi = \psi + 2k\pi$, czyli $\varphi = \frac{\psi + 2k\pi}{n}$, $k\in\Z$. Wartości
+    $k = 0,1,\dots,n-1$ dają kąty różniące się o wielokrotność $\frac{2\pi}{n}$, więc różne moduło $2\pi$; każda
+    następna ($k+n$) powtarza już pierwszą: $\frac{\psi+2(k+n)\pi}{n} = \frac{\psi+2k\pi}{n} + 2\pi$. Stąd dokładnie $n$
+    różnych pierwiastków. Zmiana $\psi$ na $\psi + 2m\pi$ tylko przestawia numerację, więc zbiór jest ten sam.
+    Liczba $0$ ma jeden pierwiastek: $0$.
+  </div>
+</div>
+
+<p><strong>Obraz geometryczny</strong> (to jest sedno sprawy i to sprawdzają prowadzący): pierwiastki leżą na okręgu
+o środku $0$ i promieniu $\rho^{1/n}$ i tworzą <em>wierzchołki $n$-kąta foremnego</em> &mdash; kolejne pierwiastki
+dzieli kąt $\frac{2\pi}{n}$, a pierwszy z nich leży pod kątem $\frac{\psi}{n}$.
+W szczególności:</p>
+
+<ul>
+  <li>pierwiastki <em>parzystego</em> stopnia z liczby rzeczywistej dodatniej leżą parami naprzeciwko siebie;</li>
+  <li>pierwiastki są symetryczne ze względu na obrót o $\frac{2\pi}{n}$ wokół środka okręgu;</li>
+  <li>środek okręgu nie zależy od $w$ (!) &mdash; zależy tylko od tego, gdzie &bdquo;przesunęliśmy&rdquo; zmienną.</li>
+</ul>
+
+<h4><span class="num">1.5</span>Równanie $(z-z_0)^n = w$ &mdash; czyli zadanie 3</h4>
+
+<p>Podstawiamy $u = z - z_0$. Wtedy $u^n = w$, więc pierwiastki $u_k$ liczymy jak w 1.4 i wracamy:
+$z_k = z_0 + u_k$. Geometrycznie: cały $n$-kąt foremny z 1.4 <strong>przesuwamy o wektor $z_0$</strong> &mdash;
+środkiem okręgu staje się $z_0$, promień $\rho^{1/n}$ się nie zmienia.</p>
+
+<div class="box box--uwaga">
+  <span class="label">Dlaczego nie można &bdquo;po prostu&rdquo; pierwiastkować obu stron</span>
+  <p style="margin-bottom:0">Z równania $(z+2\jj)^3 = 64\jj$ <em>nie</em> wynika $z + 2\jj = 4$ &mdash; pierwiastkowanie
+  w $\C$ nie jest jednoznaczne, daje trzy liczby. Wybór jednego pierwiastka to zgubienie dwóch rozwiązań
+  (i utrata połowy punktów). Z drugiej strony: po wyznaczeniu wszystkich $u_k$ nie ma czego &bdquo;szukać dalej&rdquo;,
+  bo stopień $3$ gwarantuje, że więcej rozwiązań nie ma (zasadnicze twierdzenie algebry).</p>
+</div>
+
+<h4><span class="num">1.6</span>Jak sprawdzić wynik w 30 sekund</h4>
+
+<div class="box box--teoria">
+  <span class="label">Cztery testy poprawności</span>
+  <ol style="margin-bottom:0">
+    <li><strong>Moduły.</strong> Każde rozwiązanie ma spełniać $|z_k - z_0| = \rho^{1/n}$ &mdash; wszystkie na jednym okręgu.</li>
+    <li><strong>Suma.</strong> Z wzorów Viète'a dla $u^n - w = u^n + 0\cdot u^{n-1} + \dots - w$: suma pierwiastków
+      jest równa $0$, więc $\sum_k z_k = n z_0$ (środek ciężkości rozwiązań to $z_0$).</li>
+    <li><strong>Iloczyn.</strong> $\prod_k u_k = (-1)^{n+1}w$, więc $\prod_k (z_k - z_0) = (-1)^{n+1}w$.</li>
+    <li><strong>Podstawienie.</strong> Wystarczy podstawić <em>jedno</em> rozwiązanie &mdash; reszta jest wymuszona przez
+      symetrię &bdquo;obrotu o $2\pi/n$&rdquo;, ale i to warto sprawdzić, gdy rachunki były brzydkie.</li>
+  </ol>
+</div>
+
+<h4><span class="num">1.7</span>Typowe błędy przy pierwiastkowaniu</h4>
+
+<div class="box box--blad">
+  <span class="label">Na co uważać</span>
+  <ul style="margin-bottom:0">
+    <li><strong>Zgubione $2k\pi$</strong> &mdash; rozwiązanie tylko jednego &bdquo;głównego&rdquo; przypadku zamiast $n$ rozwiązań.</li>
+    <li><strong>Promień $\rho/n$ zamiast $\rho^{1/n}$.</strong> Argument dzielimy przez $n$, moduł pierwiastkujemy.</li>
+    <li><strong>Brak odjęcia $z_0$.</strong> Po policzeniu $u_k$ trzeba wrócić do $z$; zapominając o tym dostaje się
+      odpowiedź do zupełnie innego równania.</li>
+    <li><strong>Kąt z tangensa bez korekty ćwiartki</strong> (np. $z = -1-\jj$: $\arctg 1 = \frac{\pi}{4}$ to zły kąt;
+      poprawnie $-\frac{3\pi}{4}$, czyli $\frac{5\pi}{4}$).</li>
+    <li><strong>Niespełniona postać odpowiedzi.</strong> Jeśli polecenie mówi &bdquo;postać kanoniczna&rdquo;, to
+      $4\cis\frac{\pi}{6}$ nie jest odpowiedzią &mdash; trzeba $(2\sqrt3 + 2\jj)$.</li>
+    <li><strong>Brak rysunku.</strong> W zadaniu &bdquo;zaznaczyć na płaszczyźnie&rdquo; punkty bez okręgu i bez
+      informacji o kącie to zazwyczaj mniej punktów.</li>
+  </ul>
+</div>
+
+<h3 id="t2">2. Funkcje wymierne i rozkład na ułamki proste</h3>
+
+<h4><span class="num">2.1</span>Funkcja wymierna, funkcja właściwa, dzielenie z resztą</h4>
+
+<p>Funkcją wymierną nazywamy iloraz dwóch wielomianów $f(x) = \dfrac{P(x)}{Q(x)}$, $Q\not\equiv 0$.
+Mówimy, że $f$ jest <strong>właściwa</strong>, gdy $\deg P < \deg Q$. Jeśli $\deg P \ge \deg Q$, to dzieląc
+z resztą, dostajemy</p>
+
+$$P(x) = S(x)Q(x) + R(x), \qquad \deg R < \deg Q, \qquad\text{czyli}\qquad f(x) = S(x) + \frac{R(x)}{Q(x)},$$
+
+<p>gdzie $S$ jest <em>częścią wielomianową</em>. Rozkład na ułamki proste dotyczy wyłącznie części właściwej
+$R/Q$ (wielomian $S$ po prostu zostaje jako składnik sumy). Dlatego <strong>pierwsze, co robimy w każdym zadaniu,
+to porównanie stopni</strong> &mdash; w zadaniu 4 mamy $\deg P = 3$ i $\deg Q = 2+4 = 6$, więc część wielomianowa
+nie występuje i nie ma czego dzielić.</p>
+
+<h4><span class="num">2.2</span>Rozkład mianownika: nad $\C$ i nad $\R$</h4>
+
+<div class="box box--teoria">
+  <span class="label">Fakt 1 (zasadnicze twierdzenie algebry)</span>
+  <p>Każdy wielomian stopnia $n\ge1$ o współczynnikach zespolonych ma pierwiastek zespolony. W konsekwencji każdy
+  taki wielomian rozkłada się na czynniki liniowe:</p>
+  $$Q(z) = c\,(z-a_1)^{k_1}(z-a_2)^{k_2}\cdots(z-a_s)^{k_s}, \qquad k_1+\dots+k_s = n .$$
+  <p style="margin-bottom:0">Liczby $a_i$ to pierwiastki, a $k_i$ &mdash; ich krotności. Ciało $\C$ jest więc
+  <em>algebraicznie domknięte</em>: nad $\C$ nie ma nierozkładalnych wielomianów stopnia $>1$.</p>
+</div>
+
+<div class="box box--teoria">
+  <span class="label">Fakt 2 (rozkład nad $\R$)</span>
+  <p>Nad $\R$ czynnikami nierozkładalnymi są wielomiany stopnia $1$ oraz te stopnia $2$, dla których
+  $\Delta = p^2-4q < 0$. Każdy wielomian rzeczywisty rozkłada się więc jednoznacznie (z dokładnością do kolejności
+  i stałej) jako</p>
+  <p style="margin-bottom:.4rem">$$Q(x) = c\prod_{i}(x-a_i)^{k_i}\prod_{j}\bigl(x^2+p_jx+q_j\bigr)^{m_j},
+  \qquad p_j^2-4q_j<0 .$$</p>
+  <div class="proof">
+    <span class="label">Skąd bierze się drugi iloczyn.</span>
+    Jeśli $a = u+v\jj$ ($v\ne 0$) jest pierwiastkiem wielomianu o współczynnikach rzeczywistych, to sprzężenie
+    $\bar a = u - v\jj$ też jest pierwiastkiem i to tej samej krotności (bo $\overline{Q(a)} = Q(\bar a)$).
+    Mnożąc parę czynników liniowych dostajemy wielomian o współczynnikach rzeczywistych:
+    $$(x-a)(x-\bar a) = x^2 - (a+\bar a)x + a\bar a = x^2 - 2ux + \bigl(u^2+v^2\bigr),$$
+    a jego wyróżnik $4u^2 - 4(u^2+v^2) = -4v^2 < 0$. Zatem zespolone pierwiastki &bdquo;grupują się&rdquo;
+    w pary sprzężone, a każda para daje jeden rzeczywisty czynnik kwadratowy nierozkładalny.
+  </div>
+</div>
+
+<h4><span class="num">2.3</span>Co to jest ułamek prosty</h4>
+
+<p><strong>Ułamek prosty nad $\C$</strong> to funkcja postaci $\dfrac{A}{(z-a)^k}$, gdzie $A\in\C\setminus\{0\}$,
+$k\ge1$. <strong>Ułamek prosty nad $\R$</strong> to funkcja postaci</p>
+
+$$\frac{A}{(x-a)^k} \qquad\text{albo}\qquad \frac{Bx+C}{\bigl(x^2+px+q\bigr)^k},$$
+
+<p>gdzie $A,B,C\in\R$, $k\ge1$, $p^2-4q<0$, a w liczniku stoi wielomian stopnia <em>mniejszego</em> niż stopień
+nierozkładalnego czynnika mianownika (czyli $0$ dla czynnika liniowego, $\le 1$ dla kwadratowego). Ten warunek na
+stopień jest częścią definicji &mdash; bez niego rozkład nie byłby jednoznaczny i nie byłby &bdquo;najdrobniejszy&rdquo;.</p>
+
+<h4><span class="num">2.4</span>Twierdzenie o rozkładzie na ułamki proste</h4>
+
+<div class="box box--teoria">
+  <span class="label">Twierdzenie</span>
+  <p>Niech $f = P/Q$ będzie funkcją wymierną właściwą ($\deg P<\deg Q$).</p>
+  <p><strong>(a) Nad $\C$:</strong> jeśli $Q(z) = c\prod_{i=1}^{s}(z-a_i)^{k_i}$, to istnieje dokładnie jeden
+  układ stałych $A_{ij}\in\C$ ($i = 1,\dots,s$; $j = 1,\dots,k_i$) taki, że</p>
+  $$f(z) = \sum_{i=1}^{s}\ \sum_{j=1}^{k_i} \frac{A_{ij}}{(z-a_i)^{j}} .$$
+  <p><strong>(b) Nad $\R$:</strong> jeśli $Q(x) = c\prod_i (x-a_i)^{k_i}\prod_j (x^2+p_jx+q_j)^{m_j}$
+  (z $p_j^2-4q_j<0$), to istnieje dokładnie jeden układ stałych rzeczywistych taki, że</p>
+  $$f(x) = \sum_{i}\ \sum_{j=1}^{k_i}\frac{A_{ij}}{(x-a_i)^{j}} \;+\; \sum_{j}\ \sum_{l=1}^{m_j}\frac{B_{jl}\,x + C_{jl}}{\bigl(x^2+p_jx+q_j\bigr)^{l}} .$$
+  <p style="margin-bottom:0"><strong>Liczba niewiadomych</strong> jest w obu wersjach ta sama i równa $\deg Q$ &mdash;
+  to jest najlepszy test poprawności zapisanej postaci rozkładu.</p>
+</div>
+
+<div class="box box--rozw">
+  <span class="label">Dlaczego to działa (szkic)</span>
+  <p>Kluczowy jest przypadek jednego bieguna $a$ krotności $k$: funkcja $\varphi(x) = (x-a)^k f(x)$ jest wielomianem
+  wymiernym, który w $a$ nie ma bieguna, więc w otoczeniu $a$ rozwija się w sposób skończony, a jego część
+  &bdquo;osobliwa&rdquo; po podzieleniu przez $(x-a)^k$ to dokładnie $A_1/(x-a) + \dots + A_k/(x-a)^k$.
+  Odejmując takie składniki dla wszystkich biegunów, dostajemy funkcję wymierną bez biegunów, czyli wielomian &mdash;
+  ale różnica ta wciąż jest funkcją właściwą (licznik ma stopień mniejszy niż mianownik), a jedynym właściwym
+  wielomianem jest wielomian zerowy.</p>
+  <p style="margin-bottom:0"><em>Jednoznaczność:</em> gdyby były dwa rozkłady, ich różnica po pomnożeniu przez $Q$
+  byłaby wielomianem stopnia $<\deg Q$ o $\deg Q$ pierwiastkach (liczonych z krotnościami) &mdash; czyli zerem.
+  To samo rozumowanie pokazuje, że układ równań na współczynniki (&bdquo;porównanie współczynników&rdquo;) ma
+  zawsze dokładnie jedno rozwiązanie, więc nie trzeba się martwić, że metoda &bdquo;nie działa&rdquo;.</p>
+</div>
+
+<h4><span class="num">2.5</span>Most między rozkładem rzeczywistym i zespolonym</h4>
+
+<p>Jeśli $f$ ma współczynniki rzeczywiste, to oba rozkłady są ze sobą ściśle powiązane &mdash; i to jest sedno zadania 4.</p>
+
+<div class="box box--teoria">
+  <span class="label">Dwa fakty</span>
+  <ol>
+    <li><strong>Przy biegunach rzeczywistych współczynniki są identyczne</strong> w obu rozkładach. Powód: są one
+      wyznaczone jednoznacznie przez granice $A_{ij} = \lim_{x\to a_i}\frac{1}{(k_i-j)!}\,\frac{d^{k_i-j}}{dx^{k_i-j}}\bigl[(x-a_i)^{k_i}f(x)\bigr]$, a ten wzór nie zależy od tego, nad jakim ciałem
+      rozkładamy (czynniki $(x-a_i)$ są te same).</li>
+    <li><strong>Para biegunów sprzężonych daje jeden rzeczywisty czynnik kwadratowy.</strong> Niech $a = u+v\jj$,
+      $v\ne0$, oraz $\alpha = s+t\jj$. Wtedy
+      $$\frac{\alpha}{x-a} + \frac{\bar\alpha}{x-\bar a} = \frac{\alpha(x-\bar a) + \bar\alpha(x-a)}{|x-a|^2} = \frac{2s\,(x-u) - 2t\,v}{(x-u)^2+v^2},$$
+      a to jest ułamek prosty nad $\R$ z mianownikiem $x^2 - 2ux + (u^2+v^2)$ i licznikiem liniowym. Zauważ, że
+      współczynnik przy drugim biegunie <em>musi</em> być sprzężeniem pierwszego &mdash; inaczej suma nie byłaby
+      rzeczywista.</li>
+  </ol>
+</div>
+
+<p>Stąd praktyczna reguła: <strong>rozkład nad $\C$ &bdquo;rozszczepia&rdquo; każdy czynnik kwadratowy na dwa czynniki
+liniowe</strong>, a rozkład nad $\R$ &bdquo;skleja&rdquo; ich współczynniki w licznik liniowy. Liczba parametrów się przy
+tym nie zmienia (dwa parametry zespolone $\alpha,\bar\alpha$ $\leftrightarrow$ dwa parametry rzeczywiste $B,C$).</p>
+
+<h4><span class="num">2.6</span>Jak wyznacza się współczynniki (gdyby trzeba było)</h4>
+
+<p>W zadaniu 4 współczynników wyznaczać nie trzeba, ale metody warto znać &mdash; to standardowy element egzaminu:</p>
+
+<table>
+  <thead>
+    <tr><th>Metoda</th><th>Na czym polega</th><th>Kiedy używać</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Metoda granic (&bdquo;cover-up&rdquo;, Heaviside)</td>
+      <td>$A_{ik_i} = \lim_{x\to a_i}(x-a_i)^{k_i}f(x)$; ogólnie
+        $A_{ij} = \frac{1}{(k_i-j)!}\lim_{x\to a_i}\frac{d^{k_i-j}}{dx^{k_i-j}}\bigl[(x-a_i)^{k_i}f(x)\bigr]$</td>
+      <td>najszybsza; od razu daje współczynnik przy najwyższej potędze każdego bieguna</td>
+    </tr>
+    <tr>
+      <td>Porównanie współczynników</td>
+      <td>pomnożyć przez $Q$, potem przyrównać współczynniki przy kolejnych potęgach $x$</td>
+      <td>gdy zostało kilka parametrów; zawsze działa (układ $\deg Q$ równań)</td>
+    </tr>
+    <tr>
+      <td>Podstawianie punktów</td>
+      <td>w tożsamości $P = \sum(\dots)$ podstawić dogodne $x$ (np. $x=0$, $x=1$, pierwiastki)</td>
+      <td>tanie uzupełnienie po metodzie granic</td>
+    </tr>
+    <tr>
+      <td>Pary zespolone</td>
+      <td>$\alpha = \lim_{z\to a}(z-a)f(z)$, potem $\beta = \bar\alpha$</td>
+      <td>rozkład nad $\C$ przy biegunach zespolonych</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="box box--rozw">
+  <span class="label">Mini-przykład (żeby zobaczyć, jak to działa)</span>
+  <p>Rozłóżmy $g(x) = \dfrac{x^2+1}{x(x-1)^2} = \dfrac{A}{x} + \dfrac{B}{x-1} + \dfrac{C}{(x-1)^2}$.</p>
+  <p>Metoda granic: $C = \lim_{x\to1}(x-1)^2g(x) = \frac{1+1}{1} = 2$ oraz
+  $A = \lim_{x\to0}x\,g(x) = \frac{0+1}{(0-1)^2} = 1$.</p>
+  <p>Zostało $B$ &mdash; porównajmy współczynniki przy $x^2$ po pomnożeniu przez mianownik:
+  $x^2+1 = A(x-1)^2 + Bx(x-1) + Cx$, więc przy $x^2$ mamy $1 = A + B$, czyli $B = 0$. Ostatecznie</p>
+  $$g(x) = \frac{1}{x} + \frac{2}{(x-1)^2}.$$
+  <p style="margin-bottom:0"><em>Sprawdzenie:</em> dla $x=2$ lewa strona to $\frac{5}{2}$,
+  prawa $\frac12 + 2 = \frac52$. Zgadza się.</p>
+</div>
+
+<h4><span class="num">2.7</span>Co właściwie trzeba napisać, gdy polecenie mówi &bdquo;bez wyznaczania współczynników&rdquo;</h4>
+
+<div class="box box--uwaga">
+  <span class="label">Istota zadania za 2 punkty</span>
+  <ul style="margin-bottom:0">
+    <li><strong>Rozkład mianownika</strong> na czynniki nierozkładalne &mdash; z krotnościami, osobno nad $\R$ i nad $\C$.</li>
+    <li><strong>Kompletność</strong>: dla czynnika $(x-a)^k$ trzeba wypisać <em>wszystkie</em> $k$ składników
+      $\frac{A_1}{x-a} + \dots + \frac{A_k}{(x-a)^k}$, nie tylko jeden.</li>
+    <li><strong>Stopnie liczników</strong>: stała przy czynnikach liniowych, wyrażenie liniowe $Bx+C$ przy
+      nierozkładalnym kwadratowym.</li>
+    <li><strong>Zgodność liczby parametrów</strong> ze stopniem mianownika (kontrola kompletności).</li>
+    <li>Współczynniki zapisujemy jako <em>różne symbole</em> ($A,B,C,\dots$); nie trzeba ich liczyć, ale trzeba
+      powiedzieć, że są stałymi rzeczywistymi (nad $\R$) lub zespolonymi (nad $\C$).</li>
+  </ul>
+</div>
+
+<h3 id="t3">3. Zbiory na płaszczyźnie i rodziny zbiorów z parametrem</h3>
+
+<h4><span class="num">3.1</span>Jak opisać zbiór na płaszczyźnie</h4>
+
+<p>Zbiory w $\R^2$ opisujemy najczęściej warunkiem: $A = \{(x,y) : W(x,y)\}$, gdzie $W$ jest koniunkcją (lub alternatywą)
+nierówności. Rysowanie zbioru to w praktyce dwie czynności: <strong>wyznaczenie brzegu</strong> (równości) i
+<strong>ustalenie, po której stronie brzegu leży wnętrze</strong> (test jednego punktu).</p>
+
+<p>Trójkąt wypełniony o wierzchołkach $A,B,C$ to <em>otoczka wypukła</em> $\operatorname{conv}\{A,B,C\}$, czyli
+najmniejszy zbiór wypukły zawierający te punkty. Równoważnie: przecięcie trzech półpłaszczyzn wyznaczonych przez
+proste $AB$, $BC$, $CA$.</p>
+
+<div class="box box--teoria">
+  <span class="label">Technika: przekroje</span>
+  <p>Dla zbioru zadanego nierównościami bardzo skuteczne jest opisanie go <strong>przekrojami poziomymi</strong>:
+  dla każdego ustalonego $y$ podajemy zbiór dopuszczalnych $x$,</p>
+  $$A_y := \{\,x : (x,y)\in A\,\}, \qquad A = \bigcup_{y}\bigl(A_y\times\{y\}\bigr).$$
+  <p style="margin-bottom:0">Jeśli $A_y$ jest przedziałem $[\ell(y), r(y)]$, to zbiór jest &bdquo;obszarem zawartym
+  między dwiema krzywymi&rdquo; &mdash; i od razu widać, jak go narysować. Analogicznie można ciąć pionowo.</p>
+</div>
+
+<p><em>Przykład, którego użyjemy w zadaniu 5.</em> Trójkąt o wierzchołkach $A = (0,0)$, $B = (1,t)$, $C = (-1,t)$,
+$t>0$. Przekrój na wysokości $y\in[0,t]$ powstaje przez przecięcie trójkąta z prostą poziomą &mdash; jest to odcinek
+współśrodkowy do podstawy, skrócony w stosunku $y/t$ (podobieństwo trójkątów). Stąd</p>
+
+$$\nabla_t = \bigl\{(x,y) : 0\le y\le t,\; |x| \le \tfrac{y}{t}\bigr\}
+  = \bigl\{(x,y) : 0\le y\le t,\; y \ge t|x|\bigr\}.$$
+
+<p>Kontrola: dla $y=0$ dostajemy $|x|\le 0$, czyli $x=0$ &mdash; wierzchołek $A$; dla $y=t$ mamy $|x|\le1$, czyli
+podstawę $[-1,1]$. Zgadza się z definicją trójkąta.</p>
+
+<h4><span class="num">3.2</span>Suma i iloczyn rodziny zbiorów</h4>
+
+<div class="box box--teoria">
+  <span class="label">Definicje</span>
+  <p>Niech $\{A_t\}_{t\in T}$ będzie rodziną podzbiorów $\R^2$. Wtedy</p>
+  $$\bigcup_{t\in T} A_t = \{\,p : \exists\, t\in T \ \ p\in A_t\,\}, \qquad
+    \bigcap_{t\in T} A_t = \{\,p : \forall\, t\in T \ \ p\in A_t\,\}.$$
+  <p style="margin-bottom:0">Suma to zbiór punktów należących do <em>choć jednego</em> zbioru rodziny, iloczyn &mdash;
+  do <em>wszystkich</em>. Zaprzeczenia (przydatne, gdy trzeba uzasadnić, że punkt <em>nie</em> należy):
+  $p\notin\bigcup_t A_t \iff \forall t\ p\notin A_t$ oraz $p\notin\bigcap_t A_t \iff \exists t\ p\notin A_t$.</p>
+</div>
+
+<p>Trzy konsekwencje, o których łatwo zapomnieć:</p>
+<ul>
+  <li>dla $T=\varnothing$: $\bigcup_{t\in\varnothing}A_t = \varnothing$, a $\bigcap_{t\in\varnothing}A_t$ to cała
+  przestrzeń (warunek pusty jest spełniony przez każdy punkt);</li>
+  <li>zawsze $\bigcap_{t\in T}A_t \subseteq A_{t_0} \subseteq \bigcup_{t\in T}A_t$ dla każdego $t_0\in T$;</li>
+  <li>$\bigcap$ &bdquo;dziedziczy&rdquo; własności &bdquo;dobre&rdquo; (np. wypukłość, domkniętość), $\bigcup$ &mdash;
+  nie zawsze (patrz 3.4).</li>
+</ul>
+
+<h4><span class="num">3.3</span>Metoda przekrojów dla sumy i iloczynu</h4>
+
+<div class="box box--teoria">
+  <span class="label">Kluczowa obserwacja</span>
+  <p>Przekrój (lub jakiekolwiek przecięcie z ustalonym zbiorem $L$) &bdquo;przechodzi&rdquo; przez sumę i iloczyn:</p>
+  $$\Bigl(\bigcup_{t}A_t\Bigr)\cap L = \bigcup_{t}\bigl(A_t\cap L\bigr), \qquad
+    \Bigl(\bigcap_{t}A_t\Bigr)\cap L = \bigcap_{t}\bigl(A_t\cap L\bigr).$$
+  <p style="margin-bottom:0">Dzięki temu można <strong>oddzielnie dla każdej wysokości $y$</strong> rozstrzygnąć, które
+  $x$ należą do sumy (istnieje $t$: $(x,y)\in A_t$), a które do iloczynu (dla każdego $t$: $(x,y)\in A_t$).
+  To redukuje zadanie dwuwymiarowe do zadania jednowymiarowego &mdash; i to jest właściwa metoda w zadaniu 5.</p>
+</div>
+
+<h4><span class="num">3.4</span>Rodzina monotoniczna: kiedy suma i iloczyn są &bdquo;skrajnymi&rdquo; zbiorami</h4>
+
+<p>Jeśli dla każdych $s,t\in T$ zachodzi $A_s\subseteq A_t$ lub $A_t\subseteq A_s$ (rodzina jest <em>łańcuchem</em>),
+to $\bigcup_t A_t$ jest największym, a $\bigcap_t A_t$ najmniejszym zbiorem rodziny. Dla rodziny malejącej</p>
+
+$$A_{t_1}\supseteq A_{t_2}\supseteq A_{t_3}\supseteq\dots \qquad\Longrightarrow\qquad
+  \bigcap_{t} A_t = \lim_{t\to \sup T} A_t \quad(\text{część wspólna wszystkich}).$$
+
+<p>W zadaniu 5 rodzina $(\nabla_t)$ jest malejąca: dla $0<t<s$ mamy $|x|\le\frac{y}{s}\Rightarrow |x|\le \frac{y}{t}$,
+więc $\nabla_s\subseteq \nabla_t$. To wyjaśnia z góry, że część wspólna będzie &bdquo;cienka&rdquo;, a suma &bdquo;gruba&rdquo;.</p>
+
+<h4><span class="num">3.5</span>Subtelność: domkniętość i konwencja $\R_+$</h4>
+
+<div class="box box--uwaga">
+  <span class="label">Gdzie naprawdę traci się punkty</span>
+  <ul style="margin-bottom:0">
+    <li><strong>Suma nieskończenie wielu zbiorów domkniętych nie musi być domknięta.</strong> Przykład:
+      $\bigcup_{n\in\N}\bigl[\tfrac1n, 1\bigr] = (0,1]$ &mdash; punkt $0$ wypada, choć każdy składnik jest domknięty.
+      Iloczyn dowolnie wielu zbiorów domkniętych jest natomiast zawsze domknięty.</li>
+    <li><strong>Konwencja $\R_+$.</strong> Jeśli $\R_+ = [0,\infty)$, to $t=0$ też jest indeksem i trzeba ustalić,
+      czym jest $\nabla_0$ &mdash; trójkąt &bdquo;zdegenerowany&rdquo;: odcinek $[-1,1]\times\{0\}$. Jeśli
+      $\R_+ = (0,\infty)$, tego indeksu nie ma. Odpowiedzi różnią się o dwa odcinki na osi $Ox$; bezpiecznie jest
+      rozważyć obie konwencje i to zaznaczyć (patrz rozwiązanie zadania 5).</li>
+    <li><strong>Nierówności nieostre.</strong> Brzeg należy do zbioru; na rysunku zaznaczamy to linią ciągłą &mdash;
+      a nie przerywaną.</li>
+  </ul>
+</div>
+
+<h4><span class="num">3.6</span>Jak wygląda poprawny &bdquo;rysunkowy&rdquo; zapis odpowiedzi</h4>
+
+<ol>
+  <li>Układ współrzędnych z opisem osi i zaznaczonymi punktami charakterystycznymi (wierzchołki, końce odcinków,
+  przecięcia), z podanymi współrzędnymi.</li>
+  <li>Zamalowany (lub zakreskowany) obszar; granice ciągłe, jeśli zbiór jest domknięty, przerywane &mdash; jeśli nie.</li>
+  <li><strong>Opis analityczny pod rysunkiem</strong>: np. $\bigcup_{t\in\R_+}\nabla_t = [-1,1]\times[0,+\infty)$.
+  Rysunek bez wzoru nie jest pełną odpowiedzią (i odwrotnie).</li>
+</ol>
+
+<h2 class="part" id="cz2"><span class="tag">Część II</span>Rozwiązania zadań 3, 4 i 5</h2>
+
+<h3 id="z3">Zadanie 3<span class="pts">4 punkty</span></h3>
+
+<div class="box box--rozw">
+  <span class="label">Treść</span>
+  <p style="margin-bottom:0">Znaleźć wszystkie rozwiązania równania $(z+2\jj)^3 = 64\jj$ i zaznaczyć je na płaszczyźnie
+  zespolonej. Rozwiązania podać w postaci kanonicznej.</p>
+</div>
+
+<p>Równanie ma postać $(z-z_0)^n = w$ ze $z_0 = -2\jj$, $n = 3$, $w = 64\jj$. Postępujemy więc według schematu
+z części teoretycznej 1.5: <em>sprowadź $w$ do postaci trygonometrycznej $\to$ wylicz wszystkie pierwiastki $n$-tego
+stopnia $\to$ przesuń wynik o $z_0$</em>.</p>
+
+<div class="box box--kom">
+  <span class="label">Plan</span>
+  <ol style="margin-bottom:0">
+    <li>$64\jj$ zapisujemy jako $\rho\cis\psi$.</li>
+    <li>Podstawiamy $u = z + 2\jj$ i rozwiązujemy $u^3 = 64\jj$: dostajemy trzy liczby
+      $u_k = \rho^{1/3}\cis\!\Bigl(\frac{\psi+2k\pi}{3}\Bigr)$, $k = 0,1,2$.</li>
+    <li>Wracamy do zmiennej $z$: $z_k = u_k - 2\jj$ &mdash; i dopiero teraz przechodzimy do postaci kanonicznej.</li>
+  </ol>
+</div>
+
+<h4><span class="num">Krok 1</span>Postać trygonometryczna prawej strony</h4>
+
+<p>$64\jj$ leży na dodatniej półosi urojonej, więc</p>
+
+$$|64\jj| = 64, \qquad \operatorname{Arg}(64\jj) = \frac{\pi}{2}, \qquad\text{czyli}\qquad 64\jj = 64\,\cis\frac{\pi}{2}.$$
+
+<p>Mamy więc $\rho = 64$, $\psi = \frac{\pi}{2}$ (każdy inny argument, np. $\frac{\pi}{2}+2\pi$, da ten sam zbiór
+pierwiastków &mdash; patrz 1.4).</p>
+
+<h4><span class="num">Krok 2</span>Pierwiastki trzeciego stopnia z $64\jj$</h4>
+
+<p>Podstawiamy $u = z + 2\jj$. Równanie przyjmuje postać $u^3 = 64\jj$, czyli $u^3 = 64\,\cis\frac{\pi}{2}$. Według
+twierdzenia z 1.4 promień to $\rho^{1/3} = \sqrt[3]{64} = 4$, a argumenty dzielimy przez $3$:</p>
+
+$$u_k = 4\,\cis\left(\frac{\frac{\pi}{2}+2k\pi}{3}\right) = 4\,\cis\left(\frac{\pi}{6} + \frac{2k\pi}{3}\right),
+  \qquad k = 0,1,2 .$$
+
+<p>Trzy argumenty różnią się o $\frac{2\pi}{3}$, jak w trójkącie foremnym:</p>
+
+<table>
+  <thead><tr><th>$k$</th><th>argument $\varphi_k$</th><th>$u_k = 4\cis\varphi_k$ (postać kanoniczna)</th></tr></thead>
+  <tbody>
+    <tr><td>$0$</td><td>$\frac{\pi}{6}$</td>
+        <td>$4\left(\frac{\sqrt3}{2} + \frac12\jj\right) = 2\sqrt3 + 2\jj$</td></tr>
+    <tr><td>$1$</td><td>$\frac{\pi}{6}+\frac{2\pi}{3} = \frac{5\pi}{6}$</td>
+        <td>$4\left(-\frac{\sqrt3}{2} + \frac12\jj\right) = -2\sqrt3 + 2\jj$</td></tr>
+    <tr><td>$2$</td><td>$\frac{\pi}{6}+\frac{4\pi}{3} = \frac{3\pi}{2}$</td>
+        <td>$4\left(0 - \jj\right) = -4\jj$</td></tr>
+  </tbody>
+</table>
+
+<p>Warto zauważyć, że $\frac{3\pi}{2}$ to ta sama półprosta co $-\frac{\pi}{2}$ &mdash; dla $k=2$ liczba leży na ujemnej
+półosi urojonej. Wszystkie trzy mają moduł $4$: istotnie leżą na okręgu $|u| = 4$.</p>
+
+<h4><span class="num">Krok 3</span>Powrót do zmiennej $z$</h4>
+
+<p>Z podstawienia $u = z + 2\jj$ mamy $z = u - 2\jj$. Odejmujemy więc $2\jj$ od każdego pierwiastka:</p>
+
+$$z_0 = (2\sqrt3 + 2\jj) - 2\jj = 2\sqrt3, \qquad
+  z_1 = (-2\sqrt3 + 2\jj) - 2\jj = -2\sqrt3, \qquad
+  z_2 = -4\jj - 2\jj = -6\jj .$$
+
+<div class="box box--odp">
+  <span class="label">Odpowiedź</span>
+  <p>Równanie $(z+2\jj)^3 = 64\jj$ ma trzy rozwiązania (w postaci kanonicznej):</p>
+  $$z_0 = 2\sqrt3, \qquad z_1 = -2\sqrt3, \qquad z_2 = -6\jj .$$
+  <p style="margin-bottom:0">Geometrycznie: są to wierzchołki trójkąta foremnego o środku w punkcie $-2\jj$ i promieniu
+  $4$; kąty biegunowe (względem środka) to $\frac{\pi}{6}$, $\frac{5\pi}{6}$ i $\frac{3\pi}{2}$
+  (równoważnie $-\frac{\pi}{2}$) &mdash; jak na rysunku 1.</p>
+</div>
+
+<figure>
+  {{include:src/figury/zad3_plaszczyzna.svg}}
+  <figcaption><span class="fig-num">Rysunek 1.</span> Rozwiązanie zadania 3. Puste kółka: pierwiastki $u_k$ równania
+  $u^3 = 64\jj$ (okrąg $|u| = 4$, przerywany). Pełne punkty: rozwiązania $z_k = u_k - 2\jj$, czyli ten sam trójkąt
+  foremny przesunięty o wektor $-2\jj$ &mdash; leżą na okręgu $|z+2\jj| = 4$. Kąt środkowy między kolejnymi
+  rozwiązaniami wynosi $\frac{2\pi}{3} = 120^\circ$.</figcaption>
+</figure>
+
+<div class="box box--kom">
+  <span class="label">Komentarz do geometrii</span>
+  <ul style="margin-bottom:0">
+    <li><strong>Przesunięcie, nie obrót.</strong> Operacja $z \mapsto z - 2\jj$ nie zmienia ani modułów, ani kątów
+      <em>między</em> rozwiązaniami &mdash; cała figura (okrąg + trójkąt) tylko zjeżdża o $2$ w dół. Dlatego wygodnie
+      jest myśleć o zadaniu jako o &bdquo;trójkącie foremnym na okręgu&rdquo; i dopiero na końcu go przesunąć.</li>
+    <li><strong>Dwa rozwiązania rzeczywiste &mdash; przypadek, nie reguła.</strong> Że $z_0,z_1\in\R$, wynika tylko
+      z tego, że części urojone $u_0,u_1$ są równe $2$, czyli dokładnie tyle, ile odejmujemy. Przy innym $z_0$ lub
+      innym $w$ tak nie będzie.</li>
+    <li><strong>Dlaczego pierwiastek $z_2$ jest &bdquo;najniżej&rdquo;.</strong> Największy moduł $|z|$ ma ten pierwiastek,
+      którego argument jest &bdquo;najbardziej w dół&rdquo;; tutaj $z_2$ leży na osi urojonej, więc
+      $|z_2| = 6$, podczas gdy $|z_{0,1}| = 2\sqrt3 \approx 3{,}46$.</li>
+  </ul>
+</div>
+
+<div class="box box--rozw">
+  <span class="label">Sprawdzenie (trzy niezależne testy)</span>
+  <ol style="margin-bottom:0">
+    <li><strong>Moduły.</strong> $|z_0 + 2\jj| = |2\sqrt3 + 2\jj| = \sqrt{12+4} = 4$,
+      $|z_1+2\jj| = 4$, $|z_2+2\jj| = |-4\jj| = 4$ &mdash; wszystkie na okręgu o promieniu $4$, zgodnie z $\rho^{1/3}=4$.</li>
+    <li><strong>Podstawienie.</strong> Dla $z_2$: $\;(z_2+2\jj)^3 = (-4\jj)^3 = -64\,\jj^3 = -64\cdot(-\jj) = 64\jj$.
+      Dla $z_0$: $\;(2\sqrt3+2\jj)^3 = 4^3\cis\!\bigl(3\cdot\frac{\pi}{6}\bigr) = 64\cis\frac{\pi}{2} = 64\jj$.</li>
+    <li><strong>Wzory Viète'a.</strong> Po rozwinięciu $\bigl(z+2\jj\bigr)^3 = z^3 + 6\jj z^2 - 12z - 8\jj$
+      równanie ma postać $z^3 + 6\jj z^2 - 12 z - 72\jj = 0$. Suma pierwiastków:
+      $2\sqrt3 - 2\sqrt3 - 6\jj = -6\jj = -\frac{6\jj}{1}$ &check;. Iloczyn:
+      $(2\sqrt3)(-2\sqrt3)(-6\jj) = (-12)(-6\jj) = 72\jj = -(-72\jj)$ &check;. Dodatkowo suma jest równa
+      $3\cdot z_0 = -6\jj$, czyli średnia rozwiązań to $-2\jj$ &mdash; zgodnie z twierdzeniem o środku ciężkości.</li>
+  </ol>
+</div>
+
+<div class="box box--uwaga">
+  <span class="label">Szkielet odpowiedzi &bdquo;na 4 punkty&rdquo;</span>
+  <p style="margin-bottom:0">(1) $64\jj = 64\cis\frac{\pi}{2}$ z podanym modułem i argumentem; (2) wzór na pierwiastki
+  z wypisanym $k = 0,1,2$ i policzonymi argumentami $\frac{\pi}{6}, \frac{5\pi}{6}, \frac{3\pi}{2}$;
+  (3) trzy wartości $u_k$; (4) odjęcie $2\jj$ i <em>wyraźna</em> odpowiedź w postaci kanonicznej
+  $2\sqrt3,\ -2\sqrt3,\ -6\jj$; (5) rysunek z okręgiem $|z+2\jj|=4$ i trójkątem foremnym. Każdy z tych elementów to
+  zwykle punkt; brak rysunku lub brak &bdquo;powrotu&rdquo; do $z$ kosztuje najczęściej cały punkt.</p>
+</div>
+
+<h3 id="z4">Zadanie 4<span class="pts">2 punkty</span></h3>
+
+<div class="box box--rozw">
+  <span class="label">Treść</span>
+  <p style="margin-bottom:0">Zapisać funkcję wymierną
+  $f(x) = \dfrac{x^3+1}{(x^2+4x+29)(x^2-3x)^2}$ jako sumę ułamków prostych nad $\R$ i nad $\C$
+  (bez wyznaczania współczynników).</p>
+</div>
+
+<p>Zadanie jest &bdquo;za 2 punkty&rdquo;, bo nie ma w nim żadnych rachunków &mdash; cała treść to
+<em>poprawna struktura rozkładu</em>. Wystarczy więc wykonać trzy rzeczy: sprawdzić właściwość, rozłożyć mianownik
+nad odpowiednim ciałem i wypisać komplet składników z właściwymi stopniami liczników.</p>
+
+<h4><span class="num">Krok 1</span>Czy funkcja jest właściwa?</h4>
+
+<p>Licznik ma stopień $3$. Mianownik ma stopień $2 + 4 = 6$. Ponieważ $\deg P = 3 < 6 = \deg Q$, funkcja jest
+<strong>właściwa</strong> &mdash; nie ma części wielomianowej, więc można od razu przejść do rozkładu (gdyby stopnie
+były w drugą stronę, trzeba by najpierw podzielić z resztą i rozkładać tylko $R/Q$).</p>
+
+<h4><span class="num">Krok 2</span>Rozkład mianownika na czynniki nierozkładalne</h4>
+
+<p>Mianownik jest iloczynem dwóch nawiasów; zajmujemy się każdym osobno.</p>
+
+<p><strong>(a)</strong> $\;(x^2-3x)^2 = \bigl(x(x-3)\bigr)^2 = x^2\,(x-3)^2$ &mdash; dwa pierwiastki rzeczywiste:
+$0$ i $3$, oba krotności $2$. Uwaga na krotność: to nie jest $(x-3)^2$ ani $x(x-3)$, tylko dokładnie $x^2(x-3)^2$.</p>
+
+<p><strong>(b)</strong> $\;x^2+4x+29$ ma wyróżnik</p>
+
+$$\Delta = 4^2 - 4\cdot 1\cdot 29 = 16 - 116 = -100 < 0,$$
+
+<p>jest więc <strong>nierozkładalny nad $\R$</strong> (brak pierwiastków rzeczywistych). Jego pierwiastki zespolone to</p>
+
+$$x = \frac{-4 \pm \sqrt{-100}}{2} = \frac{-4 \pm 10\jj}{2} = -2 \pm 5\jj,$$
+
+<p>czyli nad $\C$ mamy rozkład na dwa czynniki liniowe:</p>
+
+$$x^2+4x+29 = \bigl(x - (-2+5\jj)\bigr)\bigl(x-(-2-5\jj)\bigr) = (x+2-5\jj)(x+2+5\jj).$$
+
+<p>Sprawdzenie iloczynem: $(x+2)^2 - (5\jj)^2 = x^2+4x+4+25 = x^2+4x+29$ &check;.</p>
+
+<p>Podsumowując oba rozkłady mianownika:</p>
+
+$$Q(x) = x^2(x-3)^2\bigl(x^2+4x+29\bigr) \quad\text{(nad }\R\text{)}, \qquad
+  Q(x) = x^2(x-3)^2\,(x+2-5\jj)(x+2+5\jj) \quad\text{(nad }\C\text{)}.$$
+
+<h4><span class="num">Krok 3</span>Postać rozkładu nad $\R$</h4>
+
+<p>Zbieramy reguły z 2.3&ndash;2.4: każdemu pierwiastkowi rzeczywistemu krotności $k$ odpowiada $k$ składników
+z mianownikami $(x-a)^1,\dots,(x-a)^k$ i <em>stałymi</em> licznikami; nierozkładalnemu czynnikowi kwadratowemu
+krotności $1$ odpowiada jeden składnik z mianownikiem $x^2+4x+29$ i licznikiem <em>liniowym</em>:</p>
+
+<ul>
+  <li>$x^2$ (pierwiastek $0$, krotność $2$): $\;\dfrac{A}{x} + \dfrac{B}{x^2}$</li>
+  <li>$(x-3)^2$ (pierwiastek $3$, krotność $2$): $\;\dfrac{C}{x-3} + \dfrac{D}{(x-3)^2}$</li>
+  <li>$x^2+4x+29$ (nierozkładalny, krotność $1$, $\Delta<0$): $\;\dfrac{Ex+F}{x^2+4x+29}$</li>
+</ul>
+
+<div class="box box--odp">
+  <span class="label">Odpowiedź &mdash; rozkład nad $\R$</span>
+  $$\frac{x^3+1}{(x^2+4x+29)(x^2-3x)^2}
+    = \frac{A}{x} + \frac{B}{x^2} + \frac{C}{x-3} + \frac{D}{(x-3)^2} + \frac{Ex+F}{x^2+4x+29},$$
+  <p style="margin-bottom:0">gdzie $A,B,C,D,E,F\in\R$ są pewnymi stałymi.</p>
+</div>
+
+<h4><span class="num">Krok 4</span>Postać rozkładu nad $\C$</h4>
+
+<p>Nad $\C$ <em>wszystkie</em> czynniki mianownika są liniowe, więc każdy ułamek prosty ma stały licznik.
+Czynniki $x^2$ i $(x-3)^2$ wyglądają tak samo jak poprzednio; natomiast $x^2+4x+29$ rozpada się na dwa czynniki
+pierwszego stopnia, czyli daje <em>dwa</em> składniki zamiast jednego:</p>
+
+<ul>
+  <li>$(x+2-5\jj)$ &mdash; biegun $-2+5\jj$: $\;\dfrac{E'}{x+2-5\jj}$</li>
+  <li>$(x+2+5\jj)$ &mdash; biegun $-2-5\jj$: $\;\dfrac{F'}{x+2+5\jj}$</li>
+</ul>
+
+<div class="box box--odp">
+  <span class="label">Odpowiedź &mdash; rozkład nad $\C$</span>
+  $$\frac{x^3+1}{(x^2+4x+29)(x^2-3x)^2}
+    = \frac{A'}{x} + \frac{B'}{x^2} + \frac{C'}{x-3} + \frac{D'}{(x-3)^2}
+      + \frac{E'}{x+2-5\jj} + \frac{F'}{x+2+5\jj},$$
+  <p style="margin-bottom:0">gdzie $A',B',C',D',E',F'\in\C$ są pewnymi stałymi.</p>
+</div>
+
+<div class="box box--kom">
+  <span class="label">Kontrola: liczba parametrów</span>
+  <p style="margin-bottom:0">W obu rozkładach jest dokładnie $6$ niewiadomych, a $\deg Q = 6$ &mdash; to się zgadza
+  i jest to najlepszy dowód, że żadnego składnika nie pominęliśmy (twierdzenie z 2.4 mówi, że liczba parametrów
+  zawsze równa się stopniowi mianownika). Gdyby ktoś zapomniał o składniku $\frac{B}{x^2}$, dostałby $5$ parametrów
+  &mdash; i rozkład, który nie istnieje.</p>
+</div>
+
+<div class="box box--kom">
+  <span class="label">Komentarz: oba rozkłady to ta sama treść</span>
+  <ul style="margin-bottom:0">
+    <li>Przy <strong>biegunach rzeczywistych</strong> współczynniki są w obu rozkładach identyczne: $A'=A$,
+      $B'=B$, $C'=C$, $D'=D$ (uzasadnienie w 2.5 &mdash; dane tym samym wzorem granicznym). Dlatego można użyć tych
+      samych liter &mdash; to nie błąd, ale bezpieczniej jest zaznaczyć, że mówimy o tym samym współczynniku.</li>
+    <li>Para składników $\dfrac{E'}{x+2-5\jj} + \dfrac{F'}{x+2+5\jj}$ <strong>skleja się</strong> w rzeczywisty ułamek
+      $\dfrac{Ex+F}{x^2+4x+29}$ z <em>licznikiem liniowym</em> &mdash; i to jest cała &bdquo;różnica&rdquo; między
+      rozkładami. Przy funkcji o współczynnikach rzeczywistych zachodzi $F' = \overline{E'}$, więc realnie nowych
+      informacji nie przybywa (2 parametry zespolone sprzężone = 2 parametry rzeczywiste).</li>
+    <li>Gdyby czynnik kwadratowy miał krotność $m>1$, nad $\R$ trzeba by wypisać
+      $\frac{B_1x+C_1}{x^2+4x+29} + \dots + \frac{B_mx+C_m}{(x^2+4x+29)^m}$, a nad $\C$ &mdash; po $m$ składników przy
+      każdym z dwóch biegunów zespolonych. Tutaj $m=1$, więc jest prościej.</li>
+  </ul>
+</div>
+
+<div class="box box--uwaga">
+  <span class="label">Bardzo typowe błędy w tym zadaniu</span>
+  <ul style="margin-bottom:0">
+    <li><strong>Zgubiona potęga w $(x^2-3x)^2$:</strong> napisanie $\frac{C}{x-3}+\frac{D}{x}$ zamiast czterech
+      składników &mdash; najczęstsza strata punktu.</li>
+    <li><strong>Stała zamiast liniowego licznika</strong> przy $x^2+4x+29$, np. $\frac{E}{x^2+4x+29}$ &mdash; to nie
+      jest ułamek prosty (licznik musi mieć stopień mniejszy od stopnia nierozkładalnego czynnika, tu $1$).</li>
+    <li><strong>Próba rozkładu $x^2+4x+29$ nad $\R$</strong> na czynniki liniowe z $\sqrt{-100}$ &mdash; nad $\R$
+      ten czynnik zostaje.</li>
+    <li><strong>Zapomnienie o właściwości</strong> funkcji (tu akurat jest właściwa, ale w innych zadaniach trzeba
+      dzielić).</li>
+    <li><strong>Niepotrzebne liczenie współczynników</strong> &mdash; polecenie wyraźnie tego nie wymaga; czas lepiej
+      poświęcić na sprawdzenie kompletności. (Poniżej &mdash; dla treningu &mdash; wartości i tak podajemy.)</li>
+  </ul>
+</div>
+
+<div class="box box--rozw">
+  <span class="label">Dla treningu: pełne wartości współczynników</span>
+  <p>Gdyby polecenie wymagało wyznaczenia współczynników (metoda granic + porównanie współczynników z 2.6), dostalibyśmy
+  &mdash; odpowiednio &mdash; nad $\R$:</p>
+  $$A = \frac{46}{22707},\quad B = \frac{1}{261},\quad C = \frac{41}{6750},\quad D = \frac{14}{225},\quad
+    E = -\frac{1703}{210250},\quad F = -\frac{24531}{210250},$$
+  <p>a nad $\C$ (współczynniki przy biegunach rzeczywistych bez zmian, $E' = \bar F'$):</p>
+  $$A' = \frac{46}{22707},\quad B' = \frac{1}{261},\quad C' = \frac{41}{6750},\quad D' = \frac{14}{225},\quad
+    E' = \frac{-1703 + 4225\jj}{420500},\quad F' = \frac{-1703 - 4225\jj}{420500}.$$
+  <p style="margin-bottom:0">Dwie pierwsze liczby ($B$ i $D$) można policzyć w sekundę metodą granic:
+  $B = \lim_{x\to0}x^2f(x) = \frac{1}{(-3)^2\cdot 29} = \frac{1}{261}$,
+  $D = \lim_{x\to3}(x-3)^2f(x) = \frac{28}{9\cdot 50} = \frac{14}{225}$.
+  Widać też, dlaczego polecenie mówiło &bdquo;bez wyznaczania współczynników&rdquo; &mdash; są brzydkie, a rzecz
+  jest w strukturze.</p>
+</div>
+
+<div class="box box--uwaga">
+  <span class="label">Szkielet odpowiedzi &bdquo;na 2 punkty&rdquo;</span>
+  <p style="margin-bottom:0">Jedno zdanie o stopniach ($3<6$, funkcja właściwa) &rarr; rozkład mianownika nad $\R$
+  z policzonym $\Delta = -100$ &rarr; rozkład nad $\R$ (5 składników, $6$ stałych) &rarr; rozkład nad $\C$
+  (6 składników: $x^2+4x+29 = (x+2-5\jj)(x+2+5\jj)$). To wszystko. Żadnych układów równań.</p>
+</div>
+
+<h3 id="z5">Zadanie 5<span class="pts">3 punkty</span></h3>
+
+<div class="box box--rozw">
+  <span class="label">Treść</span>
+  <p style="margin-bottom:0">Dana jest rodzina trójkątów (wypełnionych) $(\nabla_t)_{t\in\R_+}$ o wierzchołkach
+  $A = (0,0)$, $B_t = (1,t)$, $C_t = (-1,t)$. Narysować zbiory $\displaystyle\bigcup_{t\in\R_+}\nabla_t$ oraz
+  $\displaystyle\bigcap_{t\in\N}\nabla_t$.</p>
+</div>
+
+<p>Zadanie wygląda na &bdquo;geometryczne&rdquo;, ale w istocie jest czysto logiczne: trzeba przetłumaczyć
+$\bigcup$/$\bigcap$ na kwantyfikatory i dla każdego punktu płaszczyzny rozstrzygnąć, czy istnieje ($\exists t$) czy
+też dla każdego $t$ ($\forall t$) należy on do odpowiedniego trójkąta. Pomocniczo posługujemy się <em>przekrojami
+poziomymi</em> (3.1 i 3.3).</p>
+
+<h4><span class="num">Krok 1</span>Opis analityczny jednego trójkąta</h4>
+
+<p>Wszystkie trójkąty mają wierzchołek $A$ w początku układu i podstawę $B_tC_t$ na wysokości $y = t$. Przekrój
+trójkąta prostą poziomą na wysokości $y\in[0,t]$ jest odcinkiem $[-x_y,x_y]$, gdzie z podobieństwa trójkątów
+$\frac{x_y}{1} = \frac{y}{t}$, czyli $x_y = \frac{y}{t}$. Dlatego (dla $t>0$)</p>
+
+$$\nabla_t = \Bigl\{(x,y)\ :\ 0\le y\le t,\ \ |x|\le \frac{y}{t}\Bigr\}
+  = \bigl\{(x,y)\ :\ 0\le y\le t,\ \ t|x|\le y\bigr\}.$$
+
+<p>Dla $t=0$ trójkąt jest zdegenerowany: to odcinek $[-1,1]\times\{0\}$ (wszystkie trzy wierzchołki leżą na osi $Ox$).
+Ta jedna obserwacja zdecyduje później o wyglądzie odpowiedzi.</p>
+
+<figure>
+  {{include:src/figury/zad5_trojkaty.svg}}
+  <figcaption><span class="fig-num">Rysunek 2.</span> Trzy trójkąty z rodziny: $\nabla_{0,6}$, $\nabla_{1,2}$,
+  $\nabla_{2,4}$. Wszystkie mają wierzchołek w $A$ i podstawę długości $2$ na wysokości $t$; im większe $t$, tym
+  trójkąt &bdquo;węższy&rdquo;. Czerwony odcinek to przekrój na wysokości $y$: ma długość $\frac{2y}{t}$.</figcaption>
+</figure>
+
+<h4><span class="num">Krok 2</span>Suma $\bigcup_{t\in\R_+}\nabla_t$</h4>
+
+<p>Z definicji: $(x,y)\in\bigcup_{t\ge0}\nabla_t$ wtedy i tylko wtedy, gdy <em>istnieje</em> $t\ge0$ takie, że</p>
+
+$$0\le y\le t \qquad\text{oraz}\qquad t|x|\le y .$$
+
+<p>Analizujemy przypadki ze względu na $y$:</p>
+
+<ul>
+  <li><strong>$y<0$:</strong> żaden $\nabla_t$ nie zawiera takich punktów (wszystkie leżą w półpłaszczyźnie $y\ge0$),
+  więc punkty te nie należą do sumy.</li>
+  <li><strong>$y=0$:</strong> warunki dają $t|x|\le 0$, czyli $x = 0$ dla $t>0$; jedyny wyjątek to $t=0$, dla którego
+  $\nabla_0 = [-1,1]\times\{0\}$. Zatem na osi $Ox$ suma zawiera cały odcinek $[-1,1]\times\{0\}$.</li>
+  <li><strong>$y>0$:</strong> potrzebujemy $t\ge y$ oraz $t\le \frac{y}{|x|}$ (dla $x\ne0$) &mdash; taki $t$ istnieje
+  dokładnie wtedy, gdy $y\le \frac{y}{|x|}$, czyli gdy $|x|\le 1$. Dla $x=0$ warunek $t|x|\le y$ jest spełniony
+  zawsze, więc wystarczy $t\ge y$ (np. $t=y$).</li>
+</ul>
+
+<div class="box box--kom">
+  <span class="label">Krótszy (i ładniejszy) argument</span>
+  <p style="margin-bottom:0">Dla $y>0$ i $|x|\le1$ punkt $(x,y)$ należy <em>do trójkąta $\nabla_y$ we własnej osobie</em>:
+  warunki to $0\le y\le y$ &check; oraz $y|x|\le y \iff |x|\le 1$ &check;. To dowodzi zawierania
+  $[-1,1]\times(0,\infty)\subseteq\bigcup_t\nabla_t$. W drugą stronę: każdy $\nabla_t$ leży w pasie $|x|\le1$
+  (bo dla $(x,y)\in\nabla_t$ mamy $|x|\le\frac{y}{t}\le\frac{t}{t} = 1$), więc suma też leży w tym pasie.
+  Zawierania się schodzą.</p>
+</div>
+
+<div class="box box--odp">
+  <span class="label">Odpowiedź (dla $\R_+ = [0,+\infty)$)</span>
+  $$\bigcup_{t\in\R_+}\nabla_t = [-1,1]\times[0,+\infty)$$
+  <p style="margin-bottom:0">czyli <strong>domknięty pas pionowy</strong> między prostymi $x=-1$ i $x=1$, powyżej osi
+  $Ox$ (wraz z odcinkiem $[-1,1]$ tej osi).</p>
+</div>
+
+<figure>
+  {{include:src/figury/zad5_suma.svg}}
+  <figcaption><span class="fig-num">Rysunek 3.</span> Suma rodziny: pas $[-1,1]\times[0,+\infty)$. Trójkąty
+  &bdquo;wypełniają&rdquo; go całkowicie &mdash; coraz większe $t$ dorzuca punkty coraz wyżej, a żaden punkt poza pasem
+  nie należy do żadnego $\nabla_t$.</figcaption>
+</figure>
+
+<div class="box box--uwaga">
+  <span class="label">Gdyby przyjąć $\R_+ = (0,+\infty)$</span>
+  <p style="margin-bottom:0">Wtedy $t=0$ nie występuje, więc odcinek $[-1,1]\times\{0\}$ wypada &mdash; poza punktem
+  $A=(0,0)$ (który należy do każdego $\nabla_t$). Odpowiedź to
+  $\bigl([-1,1]\times(0,+\infty)\bigr)\cup\{(0,0)\}$ &mdash; ten sam pas, ale <em>bez</em> dwóch odcinków
+  $[-1,0)\times\{0\}$ i $(0,1]\times\{0\}$; zbiór nie jest wtedy domknięty. Warto napisać w rozwiązaniu, którą
+  konwencję się stosuje.</p>
+</div>
+
+<h4><span class="num">Krok 3</span>Iloczyn $\bigcap_{t\in\N}\nabla_t$</h4>
+
+<p>Teraz indeksami są liczby naturalne: $t = 1,2,3,\dots$. Punkt $(x,y)$ należy do części wspólnej, gdy
+<strong>dla każdego</strong> $n\ge1$:</p>
+
+$$0\le y\le n \qquad\text{oraz}\qquad n|x|\le y .$$
+
+<p>Trzy warunki, każdy rozstrzygający:</p>
+
+<ol>
+  <li>$y\le n$ dla wszystkich $n\ge1$ &mdash; wystarczy popatrzeć na <em>najmniejsze</em> $n=1$: daje to
+    $y\le 1$. (Dla większych $n$ warunek jest automatycznie słabszy.)</li>
+  <li>$y\ge 0$ (każdy $\nabla_n$ leży nad osią $Ox$).</li>
+  <li>$n|x|\le y$ dla wszystkich $n$: gdy $x\ne0$, lewa strona rośnie nieograniczenie, więc dla dostatecznie dużego
+    $n$ warunek pęka. Zatem <strong>musi być $x=0$</strong>.</li>
+</ol>
+
+<p>Razem: $x = 0$ i $0\le y\le 1$, czyli część wspólna to <strong>odcinek</strong> od $(0,0)$ do $(0,1)$ &mdash;
+leżący na osi $Oy$, będący środkową trójkąta $\nabla_1$.</p>
+
+<div class="box box--odp">
+  <span class="label">Odpowiedź (dla $\N = \{1,2,3,\dots\}$)</span>
+  $$\bigcap_{t\in\N}\nabla_t = \bigl\{(0,y)\ :\ 0\le y\le 1\bigr\} = \overline{A\,M_1},$$
+  <p style="margin-bottom:0">gdzie $M_1 = (0,1)$ jest środkiem podstawy $B_1C_1$; jest to domknięty odcinek na osi
+  $Oy$ od początku układu do wysokości $1$.</p>
+</div>
+
+<figure>
+  {{include:src/figury/zad5_iloczyn.svg}}
+  <figcaption><span class="fig-num">Rysunek 4.</span> Część wspólna $\nabla_1$, $\nabla_2$, $\nabla_3$, $\dots$
+  (zaznaczonych cienko) to gruby zielony odcinek na osi $Oy$. Odcinek ten leży w każdym trójkącie, bo każdy trójkąt
+  zawiera swoją środkową od $A$ do środka podstawy; wyżej niż $y=1$ nie sięga już $\nabla_1$, a poza oś $Oy$ wypada
+  punkt o $x\ne0$ (patrz warunek $n|x|\le y$).</figcaption>
+</figure>
+
+<div class="box box--kom">
+  <span class="label">Komentarz: dlaczego wyszło tak &bdquo;cienko&rdquo;</span>
+  <ul style="margin-bottom:0">
+    <li><strong>Rodzina jest malejąca.</strong> Dla $0<t<s$ mamy $|x|\le\frac{y}{s}\Rightarrow|x|\le\frac{y}{t}$,
+      czyli $\nabla_s\subseteq\nabla_t$: większy indeks = mniejszy trójkąt (rysunek 2). Dlatego część wspólna jest
+      &bdquo;granicą&rdquo; rodziny przy $t$ rosnącym, a suma &mdash; jej &bdquo;największym&rdquo; elementem
+      a suma jest po prostu zbiorem większym od każdego $\nabla_t$ ($\nabla_t\subseteq\bigcup_s\nabla_s$).</li>
+    <li><strong>W części wspólnej liczy się tylko środkowa.</strong> To elegancki obserwacja: każdy $\nabla_t$ zawiera
+      odcinek $\{0\}\times[0,t]$ (środkową z $A$ do środka podstawy), więc część wspólna to
+      $\bigcap_n\{0\}\times[0,n] = \{0\}\times[0,1]$ &mdash; a warunek $n|x|\le y$ mówi, że poza tę środkową nic
+      &bdquo;nie przetrwa&rdquo;. Kształt podstawy (długość $2$) nie ma tu znaczenia; znaczenie ma to, że trójkąty
+      mają wspólny wierzchołek i nieograniczenie malejącą szerokość.</li>
+    <li><strong>Dwa dodatkowe fakty warto wspomnieć.</strong> (a) $\bigcap_{t\in\R_+}\nabla_t = \{(0,0)\}$ &mdash; nad
+      całym $\R_+$ część wspólna degeneruje się do punktu: warunek $y\le t$ dla wszystkich $t>0$ wymusza $y\le0$,
+      a wtedy $t|x|\le y$ (dla $t>0$) wymusza $x=0$.
+      (b) Dla $\N = \{0,1,2,\dots\}$ (z zerem) dochodzi $\nabla_0 = [-1,1]\times\{0\}$ i część wspólna to
+      $\{0\}\times[0,1] \cup [-1,1]\times\{0\}$ &mdash; odcinek pionowy plus odcinek poziomy (rysują literę $T$
+      obróconą o $90^\circ$).</li>
+    <li><strong>Oba zbiory są domknięte i wypukłe</strong> (odpowiednio: pas, odcinek). Suma zbiorów wypukłych nie musi
+      być wypukła, ale tutaj wszystkie trójkąty są &bdquo;współliniowe&rdquo; względem $A$, więc intuicja działa.</li>
+  </ul>
+</div>
+
+<div class="box box--uwaga">
+  <span class="label">Szkielet odpowiedzi &bdquo;na 3 punkty&rdquo;</span>
+  <p style="margin-bottom:0">(1) Warunki opisujące $\nabla_t$: $0\le y\le t$, $|x|\le \frac{y}{t}$.
+  (2) Suma: dla $y>0$ warunki są spełnialne dokładnie dla $|x|\le1$ (najprościej: $(x,y)\in\nabla_y$), stąd
+  $[-1,1]\times[0,+\infty)$, plus uwaga o $t=0$. (3) Iloczyn: $y\le n$ dla wszystkich $n\Rightarrow y\le1$,
+  $n|x|\le y$ dla wszystkich $n\Rightarrow x=0$, stąd odcinek $\{0\}\times[0,1]$. (4) Dwa rysunki z zamalowanym
+  obszarem i <em>podpisanymi</em> współrzędnymi charakterystycznych punktów.</p>
+</div>
+
+<h2 class="part" id="cz3"><span class="tag">Część III</span>Ściąga, gotowe odpowiedzi i lista kontrolna</h2>
+
+<h3>Ściąga 1: liczby zespolone</h3>
+
+<table>
+  <thead><tr><th>Obiekt</th><th>Wzór / reguła</th></tr></thead>
+  <tbody>
+    <tr><td>Moduł, sprzężenie</td><td>$|z|^2 = z\bar z = a^2+b^2$, $\bar z = a-b\jj$, $\operatorname{Re}z = \frac{z+\bar z}{2}$</td></tr>
+    <tr><td>Postać trygonometryczna</td><td>$z = r\cis\varphi$, $r = |z|$, $\arg z = \operatorname{Arg}z + 2k\pi$</td></tr>
+    <tr><td>Mnożenie</td><td>$r_1r_2\,\cis(\varphi_1+\varphi_2)$ &mdash; moduły się mnożą, argumenty dodają</td></tr>
+    <tr><td>De Moivre</td><td>$(r\cis\varphi)^n = r^n\cis(n\varphi)$</td></tr>
+    <tr><td>Pierwiastki</td><td>$z_k = \rho^{1/n}\cis\!\left(\frac{\psi+2k\pi}{n}\right)$, $k = 0,\dots,n-1$</td></tr>
+    <tr><td>Równanie $(z-z_0)^n = w$</td><td>$z_k = z_0 + \rho^{1/n}\cis\!\left(\frac{\psi+2k\pi}{n}\right)$; $n$-kąt foremny o środku $z_0$</td></tr>
+    <tr><td>Kontrole</td><td>$\sum_k z_k = n z_0$, $\prod_k(z_k-z_0) = (-1)^{n+1}w$, $|z_k-z_0| = \rho^{1/n}$</td></tr>
+    <tr><td>Warto znać na pamięć</td><td>$\jj = \cis\frac{\pi}{2}$, $-1 = \cis\pi$, $1+\jj = \sqrt2\cis\frac{\pi}{4}$,
+      $\sqrt3+\jj = 2\cis\frac{\pi}{6}$, $-\sqrt3+\jj = 2\cis\frac{5\pi}{6}$</td></tr>
+  </tbody>
+</table>
+
+<h3>Ściąga 2: rozkład na ułamki proste &mdash; algorytm</h3>
+
+<ol>
+  <li><strong>Stopnie.</strong> Jeśli $\deg P\ge\deg Q$ &mdash; podziel z resztą; rozkładaj tylko resztę.</li>
+  <li><strong>Rozłóż mianownik</strong> na czynniki nierozkładalne nad wybranym ciałem (nad $\R$: liniowe + kwadratowe
+  z $\Delta<0$; nad $\C$: tylko liniowe).</li>
+  <li><strong>Wypisz składniki</strong> według schematu:
+    <table style="margin-top:.6rem">
+      <thead><tr><th>Czynnik mianownika</th><th>Składniki nad $\R$</th><th>Składniki nad $\C$</th></tr></thead>
+      <tbody>
+        <tr><td>$(x-a)$</td><td>$\frac{A}{x-a}$</td><td>$\frac{A}{x-a}$</td></tr>
+        <tr><td>$(x-a)^k$</td><td>$\frac{A_1}{x-a}+\dots+\frac{A_k}{(x-a)^k}$</td><td>jak obok</td></tr>
+        <tr><td>$x^2+px+q$, $\Delta<0$</td><td>$\frac{Bx+C}{x^2+px+q}$</td>
+            <td>$\frac{B_1}{x-a_1}+\frac{B_2}{x-a_2}$, gdzie $a_{1,2} = \frac{-p\pm\jj\sqrt{4q-p^2}}{2}$</td></tr>
+        <tr><td>$(x^2+px+q)^m$, $\Delta<0$</td>
+            <td>$\sum_{l=1}^{m}\frac{B_lx+C_l}{(x^2+px+q)^l}$</td>
+            <td>po $m$ składników przy każdym z dwóch biegunów zespolonych</td></tr>
+      </tbody>
+    </table>
+  </li>
+  <li><strong>Policz parametry</strong> (jeśli trzeba): metoda granic dla najwyższych potęg, potem porównanie
+  współczynników lub podstawianie punktów.</li>
+  <li><strong>Skontroluj</strong>: liczba parametrów $=\deg Q$; sprawdź wynik w jednym punkcie.</li>
+</ol>
+
+<h3>Ściąga 3: sumy i iloczyny rodzin zbiorów &mdash; algorytm</h3>
+
+<ol>
+  <li><strong>Opisz zbiór wzorem</strong> (nierówności); jeśli się da &mdash; podaj przekroje poziome.</li>
+  <li><strong>Przetłumacz operację na kwantyfikator:</strong> $\bigcup \leftrightarrow \exists t$,
+  $\bigcap \leftrightarrow \forall t$.</li>
+  <li><strong>Rozbij na przypadki</strong> ze względu na położenie punktu (tu: $y<0$, $y=0$, $y>0$) albo na
+  &bdquo;skrajny&rdquo; indeks ($n=1$ daje najsilniejszy warunek na $y$, duże $n$ &mdash; na $x$).</li>
+  <li><strong>Zamknij zbiór z dwóch stron</strong> (zawieranie $\subseteq$ i $\supseteq$) &mdash; to daje pewność,
+  że nic nie zostało.</li>
+  <li><strong>Rysunek + wzór.</strong> Zaznacz, czy brzeg należy (linia ciągła czy przerywana) i podaj konwencję
+  $\R_+$, $\N$.</li>
+</ol>
+
+<h3>Gotowe odpowiedzi (do szybkiej powtórki)</h3>
+
+<div class="box box--odp">
+  <span class="label">Zadanie 3</span>
+  <p style="margin-bottom:0">$(z+2\jj)^3 = 64\jj \iff z\in\bigl\{2\sqrt3,\ -2\sqrt3,\ -6\jj\bigr\}$ &mdash; wierzchołki
+  trójkąta foremnego o środku $-2\jj$ i promieniu $4$.</p>
+</div>
+
+<div class="box box--odp">
+  <span class="label">Zadanie 4</span>
+  <p>nad $\R$: $\displaystyle f(x) = \frac{A}{x}+\frac{B}{x^2}+\frac{C}{x-3}+\frac{D}{(x-3)^2}+\frac{Ex+F}{x^2+4x+29}$.</p>
+  <p style="margin-bottom:0">nad $\C$: $\displaystyle f(x) = \frac{A'}{x}+\frac{B'}{x^2}+\frac{C'}{x-3}+\frac{D'}{(x-3)^2}+\frac{E'}{x+2-5\jj}+\frac{F'}{x+2+5\jj}$, przy czym $F' = \overline{E'}$.</p>
+</div>
+
+<div class="box box--odp">
+  <span class="label">Zadanie 5</span>
+  <p style="margin-bottom:0">$\displaystyle\bigcup_{t\in\R_+}\nabla_t = [-1,1]\times[0,+\infty)$ &nbsp;(pas domknięty);
+  $\displaystyle\bigcap_{t\in\N}\nabla_t = \{0\}\times[0,1]$ &nbsp;(odcinek na osi $Oy$).</p>
+</div>
+
+<h3>Lista kontrolna przed oddaniem pracy</h3>
+
+<ul class="check">
+  <li>Czy w rozwiązaniu równania zespolonego jest <em>wszystkich</em> $n$ pierwiastków (nie tylko jeden)?</li>
+  <li>Czy pierwiastki są podane w postaci wymaganej przez polecenie (kanoniczna / trygonometryczna)?</li>
+  <li>Czy po wyliczeniu $u_k$ wróciłem do zmiennej $z$ (odjęcie/dodanie $z_0$)?</li>
+  <li>Czy na rysunku jest okrąg (środek + promień) i informacja o kącie $\frac{2\pi}{n}$?</li>
+  <li>Czy sprawdziłem choć jedno rozwiązanie podstawieniem do równania?</li>
+  <li>Czy w rozkładzie na ułamki proste porównałem $\deg P$ z $\deg Q$?</li>
+  <li>Czy mianownik jest rozłożony z <em>krotnościami</em> &mdash; i czy każda krotność $k$ daje $k$ składników?</li>
+  <li>Czy przy czynniku kwadratowym jest licznik <em>liniowy</em>, a przy liniowym &mdash; stały?</li>
+  <li>Czy liczba parametrów równa się stopniowi mianownika (w obu rozkładach)?</li>
+  <li>Czy nad $\C$ każdy czynnik jest liniowy (także ten, który nad $\R$ był nierozkładalny)?</li>
+  <li>Czy przy sumie/iloczynie zbiorów sprawdziłem oba zawierania i przypadki brzegowe ($y=0$, $n=1$)?</li>
+  <li>Czy zaznaczyłem, jak rozumiem $\R_+$ i $\N$, oraz czy rysunek zgadza się ze wzorem?</li>
+</ul>
+
+<h3>Co jeszcze warto przećwiczyć z tego działu</h3>
+
+<ul>
+  <li>Równanie $z^4 = -16$ i $(z-1)^4 = \jj$ &mdash; trening schematu z zadania 3 (tu wychodzą czworokąty foremne).</li>
+  <li>Rozkład $\dfrac{x^4+1}{(x^2-1)^2(x^2+x+1)}$ &mdash; wersja zadania 4 z częścią wielomianową do wydzielenia i
+  czynnikiem kwadratowym w drugiej potędze.</li>
+  <li>$\bigcup_{n\in\N}\bigl[0,1-\frac1n\bigr]\times\{n\}$, $\bigcap_{t>0}\{(x,y): x^2+y^2\le t\}$ &mdash; wersje
+  zadania 5, w których odpowiedź jest zbiorem pustym lub nieograniczonym.</li>
+  <li>Zadanie 2 z tego kolokwium (koło z wyciętym wycinkiem) &mdash; ten sam aparat: okrąg + warunek na argument.</li>
+</ul>
+
+<footer>
+  <p style="margin-top:0">Opracowanie: rozwiązania zadań 3, 4 i 5 z kolokwium 1 (ALGT 2025Z, grupa T2) wraz z częścią
+  teoretyczną. Wszystkie wyniki zostały zweryfikowane niezależnie (podstawienie, wzory Viète'a, rachunek symboliczny
+  dla rozkładu na ułamki proste).</p>
+  <p style="margin-bottom:0">Dokument jest samodzielnym plikiem HTML: wzory są wstępnie wyrenderowane (KaTeX),
+  czcionki wbudowane, brak zależności od internetu &mdash; można go otworzyć offline i wydrukować
+  (<span class="note-inline">Ctrl/Cmd + P</span>, ustawienia wydruku dobrane są osobnym arkuszem stylów).</p>
+</footer>
+
+</div>
+</body>
+</html>

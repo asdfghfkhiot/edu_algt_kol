@@ -5,9 +5,11 @@
   "description": "Rozwiazania kolokwium 1 ALGT 2025Z grupa T2 (zadania 3, 4, 5) z teoria",
   "scripts": {
     "build": "node narzedzia/build.mjs",
-    "figury": "python3 narzedzia/figury.py"
+    "figury": "python3 narzedzia/figury.py",
+    "pdf": "python3 narzedzia/build_pdf.py"
   },
   "dependencies": {
-    "katex": "0.16.11"
+    "katex": "0.16.11",
+    "mathjax-full": "^3.2.2"
   }
 }
